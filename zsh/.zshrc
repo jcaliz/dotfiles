@@ -146,3 +146,8 @@ fi
 # Custom Prompt to add a happy face
 PROMPT="%{$fg_bold[green]%}\(•◡•)/%{$reset_color%} %(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%}) %{$fg[cyan]%}%c%{$reset_color%}"
 PROMPT+=' $(git_prompt_info)'
+
+# Add spacing after each command (before next prompt)
+precmd() {
+    echo
+}
