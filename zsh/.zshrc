@@ -12,7 +12,6 @@ alias ll='ls -lh --group-directories-first'
 # CUDA
 export PATH=/usr/local/cuda-12.8/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-export TELEGRAM_TOKEN='6196947006:AAFweeHhrpKpjSNCON2RcDCURuBunftEF_o'
 
 # history configs
 export HISTSIZE=5000000
