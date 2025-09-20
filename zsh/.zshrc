@@ -7,7 +7,11 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 #custom aliases
-alias ll='ls -lh --group-directories-first'
+if [ "$OSTYPE" == linux-gnu ]; then  # Is this the Ubuntu system?
+    alias ll='ls -Flh --group-directories-first'
+else
+    alias ll='gls -Flh --group-directories-first --color'
+fi
 
 # CUDA
 export PATH=/usr/local/cuda-12.8/bin${PATH:+:${PATH}}
