@@ -7,10 +7,17 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 #custom aliases
-if [ "$OSTYPE" == linux-gnu ]; then  # Is this the Ubuntu system?
+if [[ "$OSTYPE" == linux-gnu ]]; then  # Is this the Ubuntu system?
     alias ll='ls -Flh --group-directories-first'
+elif [[ "$OSTYPE" == darwin* ]]; then  # macOS
+    # Check if GNU coreutils is installed (brew install coreutils)
+    if command -v gls > /dev/null 2>&1; then
+        alias ll='gls -Flh --group-directories-first --color'
+    else
+        alias ll='ls -Flh'
+    fi
 else
-    alias ll='gls -Flh --group-directories-first --color'
+    alias ll='ls -Flh'
 fi
 
 # CUDA
@@ -41,14 +48,28 @@ setopt ignore_eof
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 
-__conda_setup="$('/home/josecaliz/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+# Detect conda installation path based on OS
+if [[ "$OSTYPE" == darwin* ]]; then
+    # macOS paths
+    CONDA_BASE="$HOME/miniconda3"
+    if [ ! -d "$CONDA_BASE" ]; then
+        CONDA_BASE="$HOME/anaconda3"
+    fi
 else
-    if [ -f "/home/josecaliz/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/josecaliz/miniconda3/etc/profile.d/conda.sh"
+    # Linux paths
+    CONDA_BASE="$HOME/miniconda3"
+fi
+
+if [ -d "$CONDA_BASE" ]; then
+    __conda_setup="$('$CONDA_BASE/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/home/josecaliz/miniconda3/bin:$PATH"
+        if [ -f "$CONDA_BASE/etc/profile.d/conda.sh" ]; then
+            . "$CONDA_BASE/etc/profile.d/conda.sh"
+        else
+            export PATH="$CONDA_BASE/bin:$PATH"
+        fi
     fi
 fi
 unset __conda_setup
@@ -57,10 +78,27 @@ function conda_activate() {
     ENV_NAME="$1"
     USER=`whoami`
     conda activate $ENV_NAME || return 1
-    alias pip='/home/${USER}/miniconda3/envs/${ENV_NAME}/bin/pip'
-    alias pip3='/home/${USER}/miniconda3/envs/${ENV_NAME}/bin/pip3'
-    alias ipython='/home/${USER}/miniconda3/envs/${ENV_NAME}/bin/ipython'
-    alias python='/home/${USER}/miniconda3/envs/${ENV_NAME}/bin/python'
+    
+    # Detect conda base path based on OS
+    if [[ "$OSTYPE" == darwin* ]]; then
+        # macOS paths
+        if [ -d "$HOME/miniconda3" ]; then
+            CONDA_BASE="$HOME/miniconda3"
+        elif [ -d "$HOME/anaconda3" ]; then
+            CONDA_BASE="$HOME/anaconda3"
+        else
+            echo "Warning: Could not find conda installation"
+            return 1
+        fi
+    else
+        # Linux paths
+        CONDA_BASE="$HOME/miniconda3"
+    fi
+    
+    alias pip="${CONDA_BASE}/envs/${ENV_NAME}/bin/pip"
+    alias pip3="${CONDA_BASE}/envs/${ENV_NAME}/bin/pip3"
+    alias ipython="${CONDA_BASE}/envs/${ENV_NAME}/bin/ipython"
+    alias python="${CONDA_BASE}/envs/${ENV_NAME}/bin/python"
 }
 
 function conda_deactivate() {
@@ -92,7 +130,18 @@ bindkey "^t" backward-delete-char
 stty intr ^G
 
 # Created by `pipx` on 2025-05-20 16:54:10
-export PATH="$PATH:/home/josecaliz/.local/bin"
+# Add pipx local bin to PATH based on OS
+if [[ "$OSTYPE" == darwin* ]]; then
+    # macOS path
+    if [ -d "$HOME/.local/bin" ]; then
+        export PATH="$PATH:$HOME/.local/bin"
+    fi
+else
+    # Linux path
+    if [ -d "$HOME/.local/bin" ]; then
+        export PATH="$PATH:$HOME/.local/bin"
+    fi
+fi
 
 # Custom Prompt to add a happy face
 PROMPT="%{$fg_bold[green]%}\(•◡•)/%{$reset_color%} %(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%}) %{$fg[cyan]%}%c%{$reset_color%}"
