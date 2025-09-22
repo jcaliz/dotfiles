@@ -15,3 +15,5 @@ nnoremap J mzJ`z
 
 xnoremap p "_dP
 xnoremap P p
+
+xnoremap <leader>mf :'<,'>s/, */, /g<CR>
