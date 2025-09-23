@@ -139,6 +139,11 @@ if [[ "$OSTYPE" == darwin* ]]; then
 else
     # Linux path
     if [ -d "$HOME/.local/bin" ]; then
+        paste-from-xclip() {
+        xclip -o -selection clipboard
+        }
+        zle -N paste-from-xclip
+        bindkey "^V" paste-from-xclip
         export PATH="$PATH:$HOME/.local/bin"
     fi
 fi
