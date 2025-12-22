@@ -13,8 +13,5 @@ nmap n nzz
 nmap N Nzz
 nnoremap J mzJ`z
 
-xnoremap p "_dP
+xnoremap p pgvy
 xnoremap P p
-
-xnoremap <leader>mf :'<,'>s/, */, /g<CR>
-" column -t -s " " file.txt

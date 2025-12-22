@@ -24,29 +24,19 @@ fi
 export PATH=/usr/local/cuda-12.8/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
-# history configs
-export HISTSIZE=5000000
-export SAVEHIST=$HISTSIZE
-
-# HISTORY
-setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
-setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
-setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
-setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
-setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
-setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
-setopt SHARE_HISTORY             # Share history between all sessions.
-# END HISTORY
-
-## Include _ as part of words
-export WORDCHARS='*?_[]~=&;!#$%^(){}'
-
-## Shell only exists after the 10th consecutive Ctrl-d
-setopt ignore_eof
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
+# Created by `pipx` on 2025-05-20 16:54:10
+# Add pipx local bin to PATH based on OS
+if [[ "$OSTYPE" == darwin* ]]; then
+    # macOS path
+    if [ -d "$HOME/.local/bin" ]; then
+        export PATH="$PATH:$HOME/.local/bin"
+    fi
+else
+    # Linux path
+    if [ -d "$HOME/.local/bin" ]; then
+        export PATH="$PATH:$HOME/.local/bin"
+    fi
+fi
 
 # Detect conda installation path based on OS
 if [[ "$OSTYPE" == darwin* ]]; then
@@ -112,41 +102,43 @@ function conda_deactivate() {
 alias ca="conda_activate"
 alias cde="conda_deactivate"
 
+# history configs
+export HISTSIZE=5000000
+export SAVEHIST=$HISTSIZE
+
+# HISTORY
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt SHARE_HISTORY             # Share history between all sessions.
+# END HISTORY
+
+## Include _ as part of words
+export WORDCHARS='*?_[]~=&;!#$%^(){}'
+
+## Shell only exists after the 10th consecutive Ctrl-d
+setopt ignore_eof
+
 ## more keys for easier editing
-bindkey "^e" beginning-of-line
+bindkey "^t" beginning-of-line # can't use ctrl-i because it's used for tab completion
 bindkey "^a" end-of-line
-bindkey "^h" backward-word
-bindkey "^l" forward-word
+bindkey "^b" backward-word
+bindkey "^w" forward-word
 bindkey "^f" history-incremental-search-forward
 bindkey "^r" history-incremental-search-backward
 bindkey "^g" send-break
-bindkey "^n" down-history
-bindkey "^p" up-history
+bindkey "^j" down-history
+bindkey "^k" up-history
+bindkey "^h" backward-char
+bindkey "^l" forward-char
 bindkey "^u" undo
-bindkey "^w" backward-kill-word
-bindkey "^d" kill-word
-bindkey "^s" delete-char
-bindkey "^t" backward-delete-char
+bindkey "^d" backward-kill-word
+bindkey "^s" kill-word
 stty intr ^G
-
-# Created by `pipx` on 2025-05-20 16:54:10
-# Add pipx local bin to PATH based on OS
-if [[ "$OSTYPE" == darwin* ]]; then
-    # macOS path
-    if [ -d "$HOME/.local/bin" ]; then
-        export PATH="$PATH:$HOME/.local/bin"
-    fi
-else
-    # Linux path
-    if [ -d "$HOME/.local/bin" ]; then
-        paste-from-xclip() {
-        xclip -o -selection clipboard
-        }
-        zle -N paste-from-xclip
-        bindkey "^V" paste-from-xclip
-        export PATH="$PATH:$HOME/.local/bin"
-    fi
-fi
 
 # Custom Prompt to add a happy face
 PROMPT="%{$fg_bold[green]%}\(•◡•)/%{$reset_color%} %(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%}) %{$fg[cyan]%}%c%{$reset_color%}"

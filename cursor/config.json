@@ -1,0 +1,271 @@
+
+{
+    "window.title": "${rootPath}${separator}${activeEditorMedium}",
+    "security.workspace.trust.enabled": false,
+    "remote.autoForwardPorts": false,
+    "remote.restoreForwardedPorts": false,
+    "remote.forwardOnOpen": false,
+    "remote.otherPortsAttributes": {
+      "onAutoForward": "ignore"
+    },
+    "remote.SSH.enableAgentForwarding": false,
+    "remote.SSH.path": "sc-ssh-wrapper",
+    "remote.SSH.connectTimeout": 60,
+    "remote.SSH.configFile": "~/.ssh/devboxes",
+    "remote.SSH.enableRemoteCommand": true,
+    "search.followSymlinks": false,
+    "debug.javascript.automaticallyTunnelRemoteServer": false,
+    "remote.autoForwardPortsSource": "output",
+    "security.workspace.trust.untrustedFiles": "open",
+    "jupyter.runStartupCommands": [
+        "%load_ext autoreload",
+        "%autoreload 2"
+    ],
+    "workbench.settings.applyToAllProfiles": [
+        "python.terminal.activateEnvInCurrentTerminal",
+        "terminal.integrated.allowChords"
+    ],
+    "terminal.external.osxExec": "iTerm.app",
+    "vim.leader": " ",
+    "vim.vimrc.path": "/Users/jcaliz/.vimrc",
+    "vim.vimrc.enable": true,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.shellIntegration.history": 10000,
+    "vim.useSystemClipboard": true,
+    "diffEditor.useInlineViewWhenSpaceIsLimited": false,
+    "editor.lineNumbers": "relative",
+    "diffEditor.renderSideBySide": true,
+    "terminal.integrated.allowChords": false,
+    "terminal.integrated.persistentSessionScrollback": 10000,
+    "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.cursorBlinking": true,
+    "remote.SSH.enableDynamicForwarding": false,
+    "remote.SSH.useLocalServer": true,
+    "ruby.rubocop.hideDisableSuggestions": true,
+    "telemetry.telemetryLevel": "off",
+    "security.promptForRemoteFileProtocolHandling": false,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "notebook.lineNumbers": "on",
+    "[ruby]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "typescript.native-preview.tsdk": "frontend/js-scripts/scripts",
+    "workbench.colorTheme": "Gruvbox Dark Soft",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "security.promptForLocalFileProtocolHandling": false,
+    "doculink.gutterIconsVisible": false,
+    "claude-code.claudeProcessWrapper": "/usr/local/bin/claude",
+    "claude-code.environmentVariables": [
+      {
+        "name": "CLAUDE_CODE_SKIP_AUTH_LOGIN",
+        "value": "true"
+      }
+    ],
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "git.blame.editorDecoration.enabled": true,
+    "terminal.integrated.profiles.osx": {
+        "zsh": { "path": "/bin/zsh" },
+        "bash": { "path": "/bin/bash" }
+    },
+    "terminal.integrated.profiles.linux": {
+        "zsh": { "path": "/bin/zsh" },
+        "bash": { "path": "/bin/bash" }
+    },
+    "claudeCode.claudeProcessWrapper": "/usr/local/bin/claude",
+    "claudeCode.environmentVariables": [
+      {
+        "name": "CLAUDE_CODE_SKIP_AUTH_LOGIN",
+        "value": "true"
+      }
+    ],
+    "python.languageServer": "None",
+    "workbench.quickOpen.closeOnFocusLost": false,
+    "update.mode": "none",
+    "githubPullRequests.pullBranch": "never",
+    "git.autofetch": true,
+    "application.shellEnvironmentResolutionTimeout": 100,
+    "explorer.confirmDragAndDrop": false,
+    "git.blame.statusBarItem.enabled": true,
+    "redhat.telemetry.enabled": false,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "e"
+            ],
+            "commands": [
+                "revealInExplorer"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "m",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "m",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.reopenWithEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ],
+            "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+        },
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "notebook.format"
+            ],
+            "when": "notebookEditable && !editorTextFocus && activeEditor == 'workbench.editor.notebook'"
+        },
+        {
+            "before": [
+                "<leader>",
+                "u"
+            ],
+            "commands": [
+                "editor.action.focusStickyScroll",
+                "editor.action.goToFocusedStickyScrollLine"
+            ],
+            "when": "editorTextFocus && !isInEmbeddedEditor"
+        },
+        {
+            "before": [
+                "<leader>",
+                "m",
+                "m",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.moveEditorToNextGroup"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "m",
+                "m",
+                "h"
+            ],
+            "commands": [
+                "workbench.action.moveEditorToPreviousGroup"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "{"
+            ],
+            "commands": [
+                "editor.gotoParentFold"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "m",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "m",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.toggleMaximizeEditorGroup"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "m",
+                "t"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.terminal.new",
+                    "args": { "cwd": "${fileDirname}" }
+                }
+            ],
+            "when": "editorTextFocus"
+        },
+        {
+            "before": [
+                "<leader>",
+                "m",
+                "c"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": { "text": "cd '${fileDirname}'\u000D" }
+                },
+                {"command": "workbench.action.terminal.toggleTerminal"}
+
+            ],
+            "when": "editorTextFocus"
+        },
+        {
+            "before": [
+                "<leader>",
+                "m",
+                "G"
+            ],
+            "commands": [
+                {
+                    "command": "extension.copyGitHubLinkToClipboard",
+                },
+            ],
+            "when": "editorTextFocus"
+        },
+        {
+            "before": [
+                "<leader>",
+                "m",
+                "S"
+            ],
+            "commands": [
+                {
+                    "command": "pay.cmd.sourcegraph.open.currentLine"
+                }
+            ],
+            "when": "editorTextFocus"
+        }
+    ],
+}

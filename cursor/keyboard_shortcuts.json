@@ -1,0 +1,252 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "cmd+i",
+        "command": "composerMode.agent"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "workbench.action.nextEditorInGroup"
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "workbench.action.previousEditorInGroup"
+    },
+    {
+        "key": "cmd+'",
+        "command": "workbench.action.debug.start",
+        "when": "debuggersAvailable && debugState == 'inactive'"
+    },
+    {
+        "command": "runCommands",
+        "key": "shift+cmd+i",
+        "args": {
+            "commands": [
+                "editor.action.insertCursorAtEndOfEachLineSelected",
+                "extension.vim_escape",
+                "extension.vim_cmd+left"
+            ]
+        },
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "y",
+        "command": "extension.vim_cmd+c",
+        "when": "editorTextFocus && vim.active && vim.overrideCopy && vim.use<D-c> && !inDebugRepl && editorHasMultipleSelections"
+    },
+    {
+        "key": "shift+alt+i",
+        "command": "-editor.action.insertCursorAtEndOfEachLineSelected",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+escape",
+        "command": "notebook.cell.quitEdit",
+        "when": "inputFocus && notebookEditorFocused && !editorHasMultipleSelections && !editorHasSelection && !editorHoverVisible"
+    },
+    {
+        "key": "shift+escape",
+        "command": "notebook.cell.quitEdit",
+        "when": "notebookEditorFocused && notebookOutputFocused"
+    },
+    {
+        "key": "shift+escape",
+        "command": "notebook.cell.quitEdit",
+        "when": "inputFocus && notebookEditorFocused && vim.active && !editorHasSelection && !editorHoverVisible && vim.mode == 'Normal'"
+    },
+    {
+        "key": "shift+escape",
+        "command": "notebook.cell.quitEdit",
+        "when": "notebookEditorFocused && !editorHasMultipleSelections && !editorHasSelection && !editorHoverVisible"
+    },
+    {
+        "key": "escape",
+        "command": "-notebook.cell.quitEdit",
+        "when": "inputFocus && notebookEditorFocused && !editorHasMultipleSelections && !editorHasSelection && !editorHoverVisible"
+    },
+    {
+        "key": "escape",
+        "command": "-notebook.cell.quitEdit",
+        "when": "notebookEditorFocused && notebookOutputFocused"
+    },
+    {
+        "key": "escape",
+        "command": "-notebook.cell.quitEdit",
+        "when": "inputFocus && notebookEditorFocused && vim.active && !editorHasSelection && !editorHoverVisible && vim.mode == 'Normal'"
+    },
+    {
+        "key": "cmd+enter",
+        "command": "jupyter.runcurrentcell",
+        "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !jupyter.havenativecells && !notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "-jupyter.runcurrentcell",
+        "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !jupyter.havenativecells && !notebookEditorFocused"
+    },
+    {
+        "key": "cmd+enter",
+        "command": "notebook.cell.execute",
+        "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || !notebookCellExecuting && notebookCellType == 'code' && notebookCellListFocused || inlineChatFocused && notebookCellChatFocused && notebookKernelCount > 0 || !notebookCellExecuting && notebookCellType == 'code' && notebookCellListFocused || inlineChatFocused && notebookCellChatFocused && notebookKernelSourceCount > 0 || inlineChatFocused && notebookCellChatFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code'"
+    },
+    {
+        "key": "h",
+        "command": "notebook.cell.collapseCellInput",
+        "when": "notebookCellListFocused && !inputFocus && !notebookCellInputIsCollapsed"
+    },
+    {
+        "key": "cmd+k cmd+c",
+        "command": "-notebook.cell.collapseCellInput",
+        "when": "notebookCellListFocused && !inputFocus && !notebookCellInputIsCollapsed"
+    },
+    {
+        "key": "h",
+        "command": "notebook.cell.expandCellInput",
+        "when": "notebookCellInputIsCollapsed && notebookCellListFocused"
+    },
+    {
+        "key": "cmd+k cmd+c",
+        "command": "-notebook.cell.expandCellInput",
+        "when": "notebookCellInputIsCollapsed && notebookCellListFocused"
+    },
+    {
+        "key": "t",
+        "command": "notebook.cell.collapseCellOutput",
+        "when": "notebookCellHasOutputs && notebookCellListFocused && !inputFocus && !notebookCellOutputIsCollapsed"
+    },
+    {
+        "key": "cmd+k t",
+        "command": "-notebook.cell.collapseCellOutput",
+        "when": "notebookCellHasOutputs && notebookCellListFocused && !inputFocus && !notebookCellOutputIsCollapsed"
+    },
+    {
+        "key": "t",
+        "command": "notebook.cell.expandCellOutput",
+        "when": "notebookCellListFocused && notebookCellOutputIsCollapsed"
+    },
+    {
+        "key": "cmd+k t",
+        "command": "-notebook.cell.expandCellOutput",
+        "when": "notebookCellListFocused && notebookCellOutputIsCollapsed"
+    },
+    {
+        "key": "m",
+        "command": "jupyter.changeCellToMarkdown",
+        "when": "editorTextFocus && jupyter.hascodecells && !jupyter.webExtension && !notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+; m",
+        "command": "-jupyter.changeCellToMarkdown",
+        "when": "editorTextFocus && jupyter.hasjcodecells && !jupyter.webExtension && !notebookEditorFocused"
+    },
+    {
+        "key": "shift+alt+z",
+        "command": "editor.action.toggleWordWrap"
+    },
+    {
+        "key": "alt+z",
+        "command": "-editor.action.toggleWordWrap"
+    },
+    {
+        "key": "shift+k",
+        "command": "list.expandSelectionUp",
+        "when": "notebookEditorFocused && listFocus && listSupportsMultiselect && !inputFocus && !treestickyScrollFocused"
+    },
+    {
+        "key": "shift+j",
+        "command": "list.expandSelectionDown",
+        "when": "notebookEditorFocused && listFocus && listSupportsMultiselect && !inputFocus && !treestickyScrollFocused"
+    },
+    {
+        "key": "escape",
+        "command": "noop",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode == 'Normal' && editorHasMultipleSelections"
+    },
+    {
+        "key": "p",
+        "command": "editor.action.clipboardPasteAction",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode == 'Normal' && editorHasMultipleSelections"
+    },
+    {
+        "key": "shift+escape",
+        "command": "extension.vim_escape",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode == 'Normal' && editorHasMultipleSelections"
+    },
+    {
+        "key": "cmd+m cmd+r",
+        "command": "notebook.cell.executeCellsAbove",
+        "when": "notebookMissingKernelExtension && notebookCellType == 'code' || notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellType == 'code' && notebookKernelSourceCount > 0"
+    },
+    {
+        "key": "alt+h",
+        "command": "-git.viewFileHistory"
+    },
+    {
+        "key": "escape",
+        "command": "-notebook.cell.quitEdit",
+        "when": "inputFocus && notebookEditorFocused && !editorHasMultipleSelections && !editorHasSelection && !editorHoverVisible && !inlineChatFocused"
+    },
+    {
+        "key": "ctrl+alt+z",
+        "command": "workbench.action.terminal.sizeToContentWidth",
+        "when": "terminalFocus && terminalHasBeenCreated && terminalIsOpen || terminalFocus && terminalIsOpen && terminalProcessSupported"
+    },
+    {
+        "key": "alt+z",
+        "command": "-workbench.action.terminal.sizeToContentWidth",
+        "when": "terminalFocus && terminalHasBeenCreated && terminalIsOpen || terminalFocus && terminalIsOpen && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "shift+cmd+c",
+        "command": "-workbench.action.terminal.openNativeConsole",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "shift+cmd+c",
+        "command": "workbench.action.terminal.copyLastCommandOutput",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "shift+cmd+c",
+        "command": "aichat.insertselectionintochat",
+        "when": "editorTextFocus && !terminalFocus"
+    },{
+        "key": "shift+cmd+l",
+        "command": "-aichat.insertselectionintochat"
+    },
+
+    // Remove the system default cursor command
+    {
+        "key": "cmd+l",
+        "command": "-aichat.newchataction"
+    },
+    {
+        "key": "cmd+l",
+        "command": "-composer.sendToAgent",
+        "when": "editorHasPromptBar && editorPromptBarFocused"
+    },
+
+    // Switch between cursor agent chat and editor window
+    {
+        "key": "cmd+l",
+        "command": "aichat.newchataction",
+        "when": "editorTextFocus || terminalFocus"
+    },
+    {
+        "key": "cmd+l",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "!editorTextFocus && !terminalFocus"
+    },
+
+    // Default command but now it's coming from User source
+    {
+        "key": "cmd+l",
+        "command": "composer.sendToAgent",
+        "when": "editorHasPromptBar && editorPromptBarFocused"
+    }
+]
