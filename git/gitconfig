@@ -1,0 +1,13 @@
+[user]
+    name = Jose Cáliz
+    email = acalizv@gmail.com
+[core]
+    editor = cursor
+    pager = cat
+[alias]
+    st = status
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[diff]
+    tool = cursor
+[difftool "cursor"]
+    cmd = cursor --wait --diff $LOCAL $REMOTE
