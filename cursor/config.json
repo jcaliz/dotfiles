@@ -27,7 +27,7 @@
     ],
     "terminal.external.osxExec": "iTerm.app",
     "vim.leader": " ",
-    "vim.vimrc.path": "/Users/jcaliz/.vimrc",
+    "vim.vimrc.path": "$HOME/.vimrc",
     "vim.vimrc.enable": true,
     "terminal.integrated.defaultProfile.linux": "zsh",
     "terminal.integrated.shellIntegration.history": 10000,
@@ -60,7 +60,7 @@
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
     "typescript.native-preview.tsdk": "frontend/js-scripts/scripts",
-    "workbench.colorTheme": "Gruvbox Dark Soft",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
