@@ -1,0 +1,42 @@
+// X11 Keyboard Layout - US Deadkeys Variant
+// Location: /usr/share/X11/xkb/symbols/us
+// 
+// This is a custom deadkeys layout for US keyboard
+// Dead keys are activated with Right Alt (AltGr)
+//
+// To use this layout, add it to /usr/share/X11/xkb/symbols/us
+// or create a custom symbols file and reference it in your XKB configuration
+//
+// Usage example:
+//   setxkbmap us -variant deadkeys
+//   or add to /etc/X11/xorg.conf.d/00-keyboard.conf:
+//     Option "XkbLayout" "us"
+//     Option "XkbVariant" "deadkeys"
+
+partial alphanumeric_keys
+xkb_symbols "deadkeys" {
+
+    include "us(basic)"
+    name[Group1]= "Custom DeadKey Layout";
+
+    // Dead keys activated with Right Alt (AltGr)
+    // Format: [ normal, shift, level3(Right Alt), level4(Right Alt+Shift) ]
+    
+    // AltGr + ` (backtick) → dead_grave (for à, è, ì, ò, ù)
+    key <TLDE> { [ grave, asciitilde, dead_grave, dead_tilde ] };
+    
+    // AltGr + e → dead_acute (for á, é, í, ó, ú, ý)
+    key <AD03> { [ e, E, dead_acute, Eacute ] };
+    
+    // AltGr + i → dead_circumflex (for â, ê, î, ô, û)
+    key <AD08> { [ i, I, dead_circumflex, Icircumflex ] };
+    
+    // AltGr + n → dead_tilde (for ã, ñ, õ)
+    key <AB06> { [ n, N, dead_tilde, Ntilde ] };
+    
+    // AltGr + c → cedilla (for ç, Ç)
+    key <AB03> { [ c, C, ccedilla, Ccedilla ] };
+
+    // Enable Right Alt (AltGr) to activate level3 (preserves Left Alt for Alt+Tab)
+    include "level3(ralt_switch)"
+};
