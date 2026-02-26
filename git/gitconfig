@@ -11,3 +11,5 @@
     tool = cursor
 [difftool "cursor"]
     cmd = cursor --wait --diff $LOCAL $REMOTE
+[push]
+    autoSetupRemote = true
